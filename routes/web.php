@@ -22,6 +22,11 @@ Route::get('/', [HomeController::class , 'index'])->name('home.index');
 Route::get('/shop',[ShopController::class , 'index'])->name("shop.index");
 Route::get("/contact",[ContactController::class , 'index'])->name("contact.index");
 Route::get("/cart",[CartController::class , 'index'])->name("cart.index");
+
+
+// !!mail
+Route::post("/sendmail" , [HomeController::class , 'suscribemail'])->name("sendemail");
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
