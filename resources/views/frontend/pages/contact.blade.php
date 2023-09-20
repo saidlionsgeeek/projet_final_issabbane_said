@@ -52,9 +52,11 @@
   <!-- ================ contact section start ================= -->
   <section class="contact-section padding_top">
     <div class="container">
-      <div class="d-none d-sm-block mb-5 pb-4">
-        <div id="map" style="height: 480px;"></div>
-        <script>
+      <div class="d-none d-sm-block mb-5 pb-4 " style="width: 100%">
+         <div id="map" style="width:100%; height: 480px;">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d13223.951270423908!2d-6.7815342!3d34.0441836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2sma!4v1695235730205!5m2!1sfr!2sma" width="100%"  height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        {{--<script>
           function initMap() {
             var uluru = {
               lat: -25.363,
@@ -90,7 +92,9 @@
         </script>
         <script
           src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpfS1oRGreGSBU5HHjMmQ3o5NLw7VdJ6I&callback=initMap">
-        </script>
+        </script> --}}
+
+        
 
       </div>
 
@@ -164,7 +168,7 @@
   <!-- ================ contact section end ================= -->
 
   <!--::footer_part start::-->
-  @include("layouts.footer")
+    @include("layouts.footer")
   <!--::footer_part end::-->
 
   <!-- jquery plugins here-->
