@@ -30,7 +30,10 @@
                         <a href=""><i class="ti-heart"></i></a>
                         @if (!auth()->user())
                             <a href="{{ route('login') }}"><i class="ti-user"></i></a>
+                        @else
+                            <a href="{{ route("profile.edit") }}"><i class="ti-user text-success"></i></a>
                         @endif
+    
                         @auth
                             <form action="{{ route('logout') }}" method="POST">
                                 @csrf
