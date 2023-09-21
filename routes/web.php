@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\MailController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
@@ -35,6 +36,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+// !! backoffice
+
+Route::middleware(['auth','role:admin','role:webmaster'])->group(function () {
+    Route::get('/backoffice/mailbox',[MailController::class , 'index'])->middleware('role:admin')->name("mailbox.index");
+    Route::post('/backoffice/mailbox/store',[MailController::class , 'store'])->name("mailbox.store");
 });
 
 require __DIR__.'/auth.php';

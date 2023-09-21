@@ -3,7 +3,8 @@
         <div class="row align-items-center">
             <div class="col-lg-12">
                 <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="navbar-brand" href="{{ route('home.index') }}"> <img src="img/logo.png" alt="logo"> </a>
+                    <a class="navbar-brand" href="{{ route('home.index') }}"> <img src="{{ asset('img/logo.png') }}" alt="Logo">
+                    </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -23,6 +24,24 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('contact.index') }}">Contact</a>
                             </li>
+                            @role(['admin','webmaste'])
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown_3"
+                                    role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Back-office
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
+                                    @role("admin")
+                                    <a class="dropdown-item" href="{{route("mailbox.index")}}"> MailBox</a>
+                                    @endrole
+                                    {{-- <a class="dropdown-item" href="tracking.html">tracking</a>
+                                    <a class="dropdown-item" href="checkout.html">product checkout</a>
+                                    <a class="dropdown-item" href="cart.html">shopping cart</a>
+                                    <a class="dropdown-item" href="confirmation.html">confirmation</a>
+                                    <a class="dropdown-item" href="elements.html">elements</a> --}}
+                                </div>
+                            </li>
+                            @endrole
                         </ul>
                     </div>
                     <div class="hearer_icon d-flex">
