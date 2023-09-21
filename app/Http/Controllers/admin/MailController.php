@@ -39,4 +39,10 @@ class MailController extends Controller
         Mail::to("admin@admin.com")->send(new ContactMail($details));
         return redirect()->back()->with("succes",'you have send your message ');
     }
+
+    public function checkmail(MailBox $email){
+        $email->checkmail = 1;
+        $email->save();
+        return redirect()->back();
+    }
 }

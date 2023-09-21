@@ -33,6 +33,8 @@
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
                                     @role("admin")
                                     <a class="dropdown-item" href="{{route("mailbox.index")}}"> MailBox</a>
+                                    <a class="dropdown-item" href="{{route("info.index")}}"> Info</a>
+                                    <a class="dropdown-item" href="{{route("users.index")}}"> Users</a>
                                     @endrole
                                     {{-- <a class="dropdown-item" href="tracking.html">tracking</a>
                                     <a class="dropdown-item" href="checkout.html">product checkout</a>

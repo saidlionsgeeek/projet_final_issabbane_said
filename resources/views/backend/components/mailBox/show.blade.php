@@ -1,7 +1,8 @@
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#email{{ $email->id }}">
-    Show Description
+Show Description
 </button>
+
 
 <!-- Modal -->
 <div class="modal fade" id="email{{ $email->id }}" tabindex="-1" role="dialog"
@@ -15,11 +16,15 @@
                 </button>
             </div>
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                <p class="bg-danger text-left ">{{ $email->message }}</p>
+                <p class="text-left ">{{ $email->message }}</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <form action="{{route("mailbox.checkmail",$email->id)}}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <button type="submit" class="btn btn-primary">Mark as read</button>
+                </form>
             </div>
         </div>
     </div>

@@ -37,37 +37,35 @@
     <table class="table mt-5  ">
         <thead align="middle">
             <tr>
-                <th scope="col"></th>
-                <th scope="col">from</th>
-                <th scope="col">subject</th>
-                <th scope="col">email</th>
-                <th scope="col">descrption</th>
+                
+                <th scope="col">City</th>
+                <th scope="col">Avenue</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Worktime</th>
+                <th scope="col">Emil</th>
+                <th scope="col">Text</th>
             </tr>
         </thead>
         <tbody align="middle">
-            @foreach ($emails as $key => $email )
-            @if ($email->checkmail == 1)
-                <tr class="bg-secondary">
-                <th scope="row">{{$key + 1}}</th>
-                <td>{{$email->name}}</td>
-                <td>{{$email->subject}}</td>
-                <td>{{$email->email}}</td>
-                <td>@include("backend.components.mailBox.show")</td>
+            @foreach ($infos as $key => $info)
+                <tr >
+                <td>{{$info->city}}</td>
+                <td>{{$info->avenue}}</td>
+                <td>{{$info->phone}}</td>
+                <td>{{$info->woktime}}</td>
+                <td>{{$info->email}}</td>
+                <td>{{$info->text}}</td>
                 </tr>
-            @else
-            <tr >
-                <th scope="row">{{$key + 1}}</th>
-                <td>{{$email->name}}</td>
-                <td>{{$email->subject}}</td>
-                <td>{{$email->email}}</td>
-                <td>@include("backend.components.mailBox.show")</td>
-                </tr>
-            @endif
-                
             @endforeach
             
         </tbody>
     </table>
+    <br><br><br>
+    <div >
+        @foreach ( $infos as $key => $info)
+        @include("backend.components.info.update")
+        @endforeach
+    </div>
     <!-- jquery plugins here-->
     <script src="{{ asset('js/jquery-1.12.1.min.js') }}"></script>
     <!-- popper js -->

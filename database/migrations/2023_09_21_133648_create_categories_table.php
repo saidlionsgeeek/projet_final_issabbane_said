@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mail_boxes', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->text("message");
-            $table->string("name");
-            $table->string("email");
-            $table->string("subject");
-            $table->boolean("checkmail")->default(0);
             $table->timestamps();
         });
     }
@@ -27,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('mail_boxes');
+        Schema::dropIfExists('categories');
     }
 };

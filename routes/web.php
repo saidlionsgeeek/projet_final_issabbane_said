@@ -4,6 +4,8 @@ use App\Http\Controllers\admin\MailController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\admin\InfoController;
+use App\Http\Controllers\admin\UsersController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
@@ -42,7 +44,14 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth','role:admin','role:webmaster'])->group(function () {
     Route::get('/backoffice/mailbox',[MailController::class , 'index'])->middleware('role:admin')->name("mailbox.index");
-    Route::post('/backoffice/mailbox/store',[MailController::class , 'store'])->name("mailbox.store");
+    Route::get('/backoffice/users',[UsersController::class , 'index'])->middleware('role:admin')->name("users.index");
+    Route::post('/Backoffice/users/assignrole/{user}', [UsersController::class, "assignrole"])->name("users.assignrole");
+    Route::delete("/user/{user}/roles/{role}", [UsersController::class, "removerole"])->name('user.role.remove');
+    Route::get('/backoffice/info',[InfoController::class , 'index'])->middleware('role:admin')->name("info.index");
+    Route::put('/backoffice/mailbox/check/{email}',[MailController::class , 'checkmail'])->middleware('role:admin')->name("mailbox.checkmail");
+    Route::put('/backoffice/info/{info}',[InfoController::class , 'update'])->middleware('role:admin')->name("info.update");
 });
+
+Route::post('/backoffice/mailbox/store',[MailController::class , 'store'])->name("mailbox.store");
 
 require __DIR__.'/auth.php';
