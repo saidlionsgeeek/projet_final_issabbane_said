@@ -29,6 +29,11 @@ Route::get("/cart",[CartController::class , 'index'])->name("cart.index");
 Route::get("/product/{product}",[SinglePageController::class , 'index'])->name("product.index");
 Route::get('/shop/filter', [ShopController::class,'filterProducts'])->name('shop.filter');
 
+// !!sort
+Route::get('/shop/sort', [ShopController::class , "sort"])->name('shop.sort');
+
+
+
 
 // !!mail
 Route::post("/sendmail" , [HomeController::class , 'suscribemail'])->name("sendemail");

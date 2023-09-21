@@ -54,7 +54,7 @@
     <!--::header part start::-->
     @include("layouts.navigation_aranoz")
     <!-- Header part end-->
-
+    
     <!--================Home Banner Area =================-->
     <!-- breadcrumb start-->
     <section class="breadcrumb breadcrumb_bg">
@@ -109,14 +109,15 @@
                                     <p><span>{{ count($products) }} </span> Prodict Found</p>
                                     
                                 </div>
-                                <div class="single_product_menu d-flex">
+                                <form  id="sort-form" method="GET" action="{{ route('shop.sort') }}" class="single_product_menu d-flex">
                                     <h5>short by : </h5>
-                                    <select>
-                                        <option data-display="Select">name</option>
-                                        <option value="1">price</option>
-                                        <option value="2">product</option>
+                                    <select name="criteria" id="sort-by">
+                                        <option data-display="Select" value="product">product</option>
+                                        <option value="name" >name</option>
+                                        <option value="price">price</option>
                                     </select>
-                                </div>
+                                    <button type="submit" class="btn ">Trier</button>
+                                </form>
                                 
                                 <div class="single_product_menu d-flex">
                                     <div class="input-group">
@@ -137,7 +138,7 @@
                             
                         <div class="col-lg-4 col-sm-6">
                             <div class="single_product_item">
-                                <img  src="{{ asset('storage/img/'.$product->image) }}" alt="">
+                                <img height="300px"  src="{{ asset('storage/img/'.$product->image) }}" alt="">
                                 <div class="single_product_text">
                                     <h4>{{$product->name}}</h4>
                                     <h3>${{$product->price}}.00</h3>

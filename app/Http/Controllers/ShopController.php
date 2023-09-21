@@ -15,7 +15,7 @@ class ShopController extends Controller
         return view("frontend.pages.shop",compact('bestsellers',"categories","products"));
     }
 
-    
+
     public function filterProducts(Request $request)
     {
         $categoryId = $request->input('category');
@@ -32,5 +32,20 @@ class ShopController extends Controller
     
         return view("frontend.pages.shop", compact('bestsellers', 'categories', 'products'));
     }
+
+public function sort(Request $request)
+{
+    if ($request->criteria == "name") {
+        $products = Product::orderBy('name', 'asc')->paginate(9);
+    }elseif ($request->criteria == "price") {
+        $products = Product::orderBy('price', 'asc')->paginate(9);
+    }else{
+        $products= Product::latest()->paginate(9);
+    }
+    $categories = Category::all();
+    $bestsellers = Product::where('stock', '<=', 5)->get();
+
+    return view('frontend.pages.shop', compact('products', 'categories', 'bestsellers'));
+}
 }
 
