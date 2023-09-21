@@ -8,6 +8,7 @@ use App\Http\Controllers\admin\InfoController;
 use App\Http\Controllers\admin\UsersController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\SinglePageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +26,7 @@ Route::get('/', [HomeController::class , 'index'])->name('home.index');
 Route::get('/shop',[ShopController::class , 'index'])->name("shop.index");
 Route::get("/contact",[ContactController::class , 'index'])->name("contact.index");
 Route::get("/cart",[CartController::class , 'index'])->name("cart.index");
+Route::get("/product",[SinglePageController::class , 'index'])->name("product.index");
 
 
 // !!mail
