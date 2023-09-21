@@ -22,7 +22,7 @@ class ProductSeeder extends Seeder
                     'name' => $faker->text(20), 
                     'description' => $faker->text(80), 
                     'image' => 'Ofiice Chaire_'.$i. '.jpg',
-                    'stock' => $faker->numberBetween(1, 100),
+                    'stock' => $faker->numberBetween(1, 20),
                     'price' => $faker->randomFloat(2, 10, 1000),
                     'user_id' => 1, // User IDc fixed at 1 7it kolhom mn 3nd l admin
                     'category_id' => 1,
@@ -32,7 +32,7 @@ class ProductSeeder extends Seeder
                     'name' => $faker->text(20), 
                     'description' => $faker->text(80), 
                     'image' => 'Club Chair_'.$i. '.jpg',
-                    'stock' => $faker->numberBetween(1, 100),
+                    'stock' => $faker->numberBetween(1, 20),
                     'price' => $faker->randomFloat(2, 10, 1000),
                     'user_id' => 1, // User IDc fixed at 1 7it kolhom mn 3nd l admin
                     'category_id' => 2,
@@ -42,7 +42,7 @@ class ProductSeeder extends Seeder
                     'name' => $faker->text(20), 
                     'description' => $faker->text(80), 
                     'image' => 'Rocking Chair_'.$i. '.png',
-                    'stock' => $faker->numberBetween(1, 100),
+                    'stock' => $faker->numberBetween(1, 20),
                     'price' => $faker->randomFloat(2, 10, 1000),
                     'user_id' => 1, // User IDc fixed at 1 7it kolhom mn 3nd l admin
                     'category_id' => 3,

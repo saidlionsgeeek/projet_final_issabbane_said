@@ -26,7 +26,8 @@ Route::get('/', [HomeController::class , 'index'])->name('home.index');
 Route::get('/shop',[ShopController::class , 'index'])->name("shop.index");
 Route::get("/contact",[ContactController::class , 'index'])->name("contact.index");
 Route::get("/cart",[CartController::class , 'index'])->name("cart.index");
-Route::get("/product",[SinglePageController::class , 'index'])->name("product.index");
+Route::get("/product/{product}",[SinglePageController::class , 'index'])->name("product.index");
+Route::get('/shop/filter', [ShopController::class,'filterProducts'])->name('shop.filter');
 
 
 // !!mail
