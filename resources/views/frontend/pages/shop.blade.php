@@ -138,17 +138,27 @@
                             
                         <div class="col-lg-4 col-sm-6">
                             <div class="single_product_item">
+                                <a href="{{ route('product.index', $product->id) }}">
                                 <img height="300px"  src="{{ asset('storage/img/'.$product->image) }}" alt="">
+                                </a>
                                 <div class="single_product_text">
                                     <h4>{{$product->name}}</h4>
                                     <h3>${{$product->price}}.00</h3>
-                                    @if ($product->stock > 0)
-                                    
-                                    <a href="#" class="add_cart">+ add to cart<i class="ti-heart"></i></a>
-                                    @else
-                                    <a  class="add_cart"> Out of stock<i class="ti-heart"></i></a>
-                                        
-                                    @endif
+                                    @if (auth()->user())
+                                                    @if ($product->stock > 0)
+                                                        <a href="{{ route('addtocart.store', [$product->id, auth()->user()->id]) }}"
+                                                            class="add_cart btn">
+                                                            + add to cart <i class="ti-heart"></i>
+                                                        </a>
+                                                        {{-- <button type="submit" ></button> --}}
+                                                    @else
+                                                        <a class="add_cart btn">Out of stock<i
+                                                                class="ti-heart"></i></a>
+                                                    @endif
+                                                @else
+                                                    <a href="{{ route('login') }}" class="add_cart btn">+ add to
+                                                        cart</a>
+                                                @endif
                                 </div>
                             </div>
                         </div>

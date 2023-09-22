@@ -29,6 +29,7 @@ class HomeController extends Controller
             $DemoMail = "user";
         }
         Mail::to($request->email)->send(new SubscribeMail($DemoMail));
+        toastr()->success('subscribed Successfully!');
         return redirect()->back()->with("success",'hhh');
     }
 }

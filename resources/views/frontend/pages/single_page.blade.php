@@ -94,7 +94,11 @@
                                 <span class="number-increment"> <i class="ti-plus"></i></span>
                             </div> --}}
                             @if ($product->stock  > 0)
-                            <a href="#" class="btn_3">add to cart</a>
+                            <a href="{{ route('addtocart.store', [$product->id, auth()->user()->id]) }}"
+                                class="btn_3">
+                                add to cart
+                            </a>
+                            
                             @else
                                 <p class="btn_3"> Out Of Stock</p>
                             @endif

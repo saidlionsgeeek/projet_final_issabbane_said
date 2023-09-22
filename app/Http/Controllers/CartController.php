@@ -29,8 +29,36 @@ class CartController extends Controller
             "stock" => 1
         ]);
         }
-
-        
+        toastr()->success('You added items to cart successfully!');
         return redirect()->back();
+    }
+
+    public function increment(ProductUser $productuser){
+        $product = Product::find($productuser->product_id);
+        if ($product->stock > 0) {
+            $productuser->increment('stock');
+            $product->stock -= 1;
+            $product->save();
+            toastr()->success('You added items to cart successfully!');
+            return back();
+        }
+        toastr()->error('Stock Out!');
+            return back();
+    }
+    
+    public function decrement(ProductUser $productuser){
+        $product = Product::find($productuser->product_id);
+        
+        if ($productuser->stock > 1) {
+            $productuser->decrement('stock');
+            $product->stock += 1;
+            $product->save();
+        }else {
+            $product->stock += 1;
+            $product->save();
+            $productuser->delete();
+        }
+        toastr()->success('Items remove from cart successfully!');
+        return back();
     }
 }

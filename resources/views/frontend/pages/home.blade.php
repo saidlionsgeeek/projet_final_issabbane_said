@@ -28,7 +28,7 @@
 
 <body>
     <!--::header part start::-->
-    @include("layouts.navigation_aranoz")
+    @include('layouts.navigation_aranoz')
     <!-- Header part end-->
 
     <!-- banner part start-->
@@ -38,27 +38,28 @@
                 <div class="col-lg-12">
                     <div class="banner_slider owl-carousel">
                         @foreach ($productsshuffle as $productshuffle)
-                        <div class="single_banner_slider">
-                            <div class="row">
-                                <div class="col-lg-5 col-md-8">
-                                    <div class="banner_text">
-                                        <div class="banner_text_iner">
-                                            <h1>{{$productshuffle->name
-                                            }}</h1>
-                                            <p>{{$productshuffle->description}}</p>
-                                            <a href="{{route("product.index",$productshuffle->id)}}" class="btn_2">buy now</a>
+                            <div class="single_banner_slider">
+                                <div class="row">
+                                    <div class="col-lg-5 col-md-8">
+                                        <div class="banner_text">
+                                            <div class="banner_text_iner">
+                                                <h1>{{ $productshuffle->name }}</h1>
+                                                <p>{{ $productshuffle->description }}</p>
+                                                <a href="{{ route('product.index', $productshuffle->id) }}"
+                                                    class="btn_2">buy now</a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="banner_img d-none d-lg-block">
-                                    <img width="600px" height="400px" src="{{ asset('storage/img/'.$productshuffle->image) }}" alt="">
+                                    <div class="banner_img d-none d-lg-block">
+                                        <img width="600px" height="400px"
+                                            src="{{ asset('storage/img/' . $productshuffle->image) }}" alt="">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         @endforeach
-                        
+
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -79,43 +80,51 @@
                 @foreach ($latestProducts as $key => $latestProduct)
                     @if ($key == 0)
                         <div class="col-lg-7 col-sm-6">
-                    <div class="single_feature_post_text">
-                        <p>Premium Quality</p>
-                        <h3>{{$latestProduct->name}}</h3>
-                        <a href="{{route("product.index",$latestProduct->id)}}" class="feature_btn">EXPLORE NOW <i class="fas fa-play"></i></a>
-                        <img height="400px" src="{{ asset('storage/img/'.$latestProduct->image) }}" alt="">
-                    </div>
-                </div>
+                            <div class="single_feature_post_text">
+                                <p>Premium Quality</p>
+                                <h3>{{ $latestProduct->name }}</h3>
+                                <a href="{{ route('product.index', $latestProduct->id) }}" class="feature_btn">EXPLORE
+                                    NOW <i class="fas fa-play"></i></a>
+                                <img height="400px" src="{{ asset('storage/img/' . $latestProduct->image) }}"
+                                    alt="">
+                            </div>
+                        </div>
                     @endif
                     @if ($key == 1)
                         <div class="col-lg-5 col-sm-6">
-                    <div class="single_feature_post_text">
-                        <p style="position:relative; z-index: 1;">Premium Quality</p>
-                        <h3 style="position:relative; z-index: 1;">{{$latestProduct->name}}</h3>
-                        <a href="{{route("product.index",$latestProduct->id)}}" class="feature_btn">EXPLORE NOW <i class="fas fa-play"></i></a>
-                        <img height="400px" src="{{ asset('storage/img/'.$latestProduct->image) }}"  alt="">
-                    </div>
-                </div>
+                            <div class="single_feature_post_text">
+                                <p style="position:relative; z-index: 1;">Premium Quality</p>
+                                <h3 style="position:relative; z-index: 1;">{{ $latestProduct->name }}</h3>
+                                <a href="{{ route('product.index', $latestProduct->id) }}" class="feature_btn">EXPLORE
+                                    NOW <i class="fas fa-play"></i></a>
+                                <img height="400px" src="{{ asset('storage/img/' . $latestProduct->image) }}"
+                                    alt="">
+                            </div>
+                        </div>
                     @endif
                     @if ($key == 2)
                         <div class="col-lg-5 col-sm-6">
-                    <div class="single_feature_post_text">
-                        <p style="position:relative; z-index: 1;">Premium Quality</p>
-                        <h3 style="position:relative; z-index: 1;">{{$latestProduct->name}}</h3>
-                        <a href="{{route("product.index",$latestProduct->id)}}" class="feature_btn">EXPLORE NOW <i class="fas fa-play"></i></a>
-                        <img height="400px" src="{{ asset('storage/img/'.$latestProduct->image) }}"  alt="">
-                    </div>
-                </div>
+                            <div class="single_feature_post_text">
+                                <p style="position:relative; z-index: 1;">Premium Quality</p>
+                                <h3 style="position:relative; z-index: 1;">{{ $latestProduct->name }}</h3>
+                                <a href="{{ route('product.index', $latestProduct->id) }}" class="feature_btn">EXPLORE
+                                    NOW <i class="fas fa-play"></i></a>
+                                <img height="400px" src="{{ asset('storage/img/' . $latestProduct->image) }}"
+                                    alt="">
+                            </div>
+                        </div>
                     @endif
                     @if ($key == 3)
                         <div class="col-lg-7 col-sm-6">
-                    <div class="single_feature_post_text">
-                        <p>Premium Quality</p>
-                        <h3>{{$latestProduct->name}}</h3>
-                        <a href="{{route("product.index",$latestProduct->id)}}" class="feature_btn">EXPLORE NOW <i class="fas fa-play"></i></a>
-                        <img height="400px" src="{{ asset('storage/img/'.$latestProduct->image) }}" alt="">
-                    </div>
-                </div>
+                            <div class="single_feature_post_text">
+                                <p>Premium Quality</p>
+                                <h3>{{ $latestProduct->name }}</h3>
+                                <a href="{{ route('product.index', $latestProduct->id) }}" class="feature_btn">EXPLORE
+                                    NOW <i class="fas fa-play"></i></a>
+                                <img height="400px" src="{{ asset('storage/img/' . $latestProduct->image) }}"
+                                    alt="">
+                            </div>
+                        </div>
                     @endif
                 @endforeach
             </div>
@@ -139,28 +148,35 @@
                         <div class="single_product_list_slider">
                             <div class="row align-items-center justify-content-between">
                                 @foreach ($awesomes as $awesome)
-                                    <div  class="col-lg-3 col-sm-6 ">
-                                    <div class="single_product_item">
-                                        <a href="{{route("product.index",$awesome->id)}}">
-                                            <img height="300px" src="{{ asset('storage/img/'.$awesome->image) }}" alt="">
-                                        </a>
-                                        <div class="single_product_text">
-                                            <h4>{{$awesome->name}}</h4>
-                                            <h3>${{$awesome->price}}</h3>
-                                            @if (auth()->user())
-                                                <form action="{{route("addtocart.store",[$awesome->id,auth()->user()->id])}}" method="POST">
-                                                @csrf
-                                                @method("PUT")
-                                                <button type="submit" class="add_cart btn">+ add to cart</button><i class="ti-heart"></i>
-                                            </form>
-                                            @else
-                                                <a href="{{route("login")}}" class="add_cart btn">+ add to cart</a>
-                                            @endif
-                                            
+                                    <div class="col-lg-3 col-sm-6 ">
+                                        <div class="single_product_item">
+                                            <a href="{{ route('product.index', $awesome->id) }}">
+                                                <img height="300px" src="{{ asset('storage/img/' . $awesome->image) }}"
+                                                    alt="">
+                                            </a>
+                                            <div class="single_product_text">
+                                                <h4>{{ $awesome->name }}</h4>
+                                                <h3>${{ $awesome->price }}</h3>
+                                                @if (auth()->user())
+                                                    @if ($awesome->stock > 0)
+                                                        <a href="{{ route('addtocart.store', [$awesome->id, auth()->user()->id]) }}"
+                                                            class="add_cart btn">
+                                                            + add to cart<i class="ti-heart"></i>
+                                                        </a>
+                                                        {{-- <button type="submit" ></button> --}}
+                                                    @else
+                                                        <a class="add_cart btn">Out of stock<i
+                                                                class="ti-heart"></i></a>
+                                                    @endif
+                                                @else
+                                                    <a href="{{ route('login') }}" class="add_cart btn">+ add to
+                                                        cart</a>
+                                                @endif
+
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                @endforeach                               
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -178,7 +194,7 @@
                     <div class="offer_img">
                         @foreach ($products as $key => $product)
                             @if ($key == 12)
-                            <img src="{{ asset('storage/img/'.$product->image) }}" alt="">
+                                <img src="{{ asset('storage/img/' . $product->image) }}" alt="">
                             @endif
                         @endforeach
                     </div>
@@ -195,16 +211,18 @@
                                 <div id="seconds" class="date"></div>
                             </div>
                         </div>
-                        <form action="{{route("sendemail")}}" method="POST">
+                        <form action="{{ route('sendemail') }}" method="POST">
                             @csrf
-                        <div class="input-group">
-                            <input type="email" class="form-control" placeholder="enter email address"
-                                aria-label="Recipient's username" aria-describedby="basic-addon2" name="email" id="email" required>
-                            <div class="input-group-append">
-                                <button type="submit" class="input-group-text btn_2" id="basic-addon2">book now</button>
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="enter email address"
+                                    aria-label="Recipient's username" aria-describedby="basic-addon2" name="email"
+                                    id="email" required>
+                                <div class="input-group-append">
+                                    <button type="submit" class="input-group-text btn_2" id="basic-addon2">book
+                                        now</button>
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -225,16 +243,18 @@
             <div class="row align-items-center justify-content-between">
                 <div class="col-lg-12">
                     <div class="best_product_slider owl-carousel">
-                        @foreach ( $bestsellers as $bestseller )
-                        <a href="{{route("product.index",$bestseller->id)}}">
-                        <div class="single_product_item">
-                            <img height="300px" src="{{ asset('storage/img/'.$bestseller->image) }}" alt="">
-                            <div class="single_product_text">
-                                <h4>{{$bestseller->name}}</h4>
-                                <h5>Stock : {{$bestseller->stock}}</h5>
-                                <h3>${{$bestseller->price}}.00</h3>
-                            </div>
-                        </div></a>
+                        @foreach ($bestsellers as $bestseller)
+                            <a href="{{ route('product.index', $bestseller->id) }}">
+                                <div class="single_product_item">
+                                    <img height="300px" src="{{ asset('storage/img/' . $bestseller->image) }}"
+                                        alt="">
+                                    <div class="single_product_text">
+                                        <h4>{{ $bestseller->name }}</h4>
+                                        <h5>Stock : {{ $bestseller->stock }}</h5>
+                                        <h3>${{ $bestseller->price }}.00</h3>
+                                    </div>
+                                </div>
+                            </a>
                         @endforeach
                     </div>
                 </div>
@@ -252,13 +272,15 @@
                         <h5>Join Our Newsletter</h5>
                         <h2>Subscribe to get Updated
                             with new offers</h2>
-                            <form action="{{route("sendemail")}}" method="POST">
-                                @csrf
+                        <form action="{{ route('sendemail') }}" method="POST">
+                            @csrf
                             <div class="input-group">
                                 <input type="email" class="form-control" placeholder="enter email address"
-                                    aria-label="Recipient's username" aria-describedby="basic-addon2" name="email" id="email" required>
+                                    aria-label="Recipient's username" aria-describedby="basic-addon2" name="email"
+                                    id="email" required>
                                 <div class="input-group-append">
-                                    <button type="submit" class="input-group-text btn_2" id="basic-addon2">subscribe now</button>
+                                    <button type="submit" class="input-group-text btn_2" id="basic-addon2">subscribe
+                                        now</button>
                                 </div>
                             </div>
                         </form>
@@ -311,7 +333,7 @@
     <!--::subscribe_area part end::-->
 
     <!--::footer_part start::-->
-    @include("layouts.footer")
+    @include('layouts.footer')
     <!--::footer_part end::-->
 
     <!-- jquery plugins here-->

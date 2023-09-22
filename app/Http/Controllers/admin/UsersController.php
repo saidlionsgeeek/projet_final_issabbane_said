@@ -18,9 +18,11 @@ class UsersController extends Controller
     public function assignRole(Request $request, User $user)
     {
         if ($user->hasRole($request->role)) {
+        toastr()->error('This user already have this role!');
             return back()->with("message", 'role exists');
         }else{
             $user->assignRole($request->role);
+        toastr()->success('role assigned  Successfully!');
         return back()->with("message", 'role assigned');
         }
     }
@@ -29,7 +31,7 @@ class UsersController extends Controller
         if ($user->hasRole($role)) {
             
                 $user->removeRole($role);
-            
+            toastr()->warning('remove role user  Successfully!');
             return back();
         }
         return back();

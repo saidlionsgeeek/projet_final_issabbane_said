@@ -91,11 +91,16 @@
                                         </td>
                                         <td>
                                             <div class="product_count">
+                                                <a href="{{route("decrement.stock",$productuser->id)}}">
                                                 <span class="input-number-decrement"> <i
                                                         class="ti-angle-down"></i></span>
+                                                </a>
                                                 <input class="input-number" type="text"
-                                                    value="{{ $productuser->stock }}" min="0" max="10">
-                                                <span class="input-number-increment"> <i class="ti-angle-up"></i></span>
+                                                    value="{{ $productuser->stock }}" min="0"
+                                                    max="{{ $productuser->stock }}" onkeydown="return false">
+                                                    <a href="{{route("increment.stock",$productuser->id)}}" >
+                                                        <span  class="input-number-increment"> <i class="ti-angle-up"></i></span>
+                                                    </a>
                                             </div>
                                         </td>
                                         <td>

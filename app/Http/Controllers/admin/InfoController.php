@@ -32,7 +32,7 @@ class InfoController extends Controller
             "email" => $request->email,
             "text" => $request->text
         ]);
-        
+        toastr()->success('Data has been saved successfully!', 'Congrats');
         return redirect()->back();
     }
 }

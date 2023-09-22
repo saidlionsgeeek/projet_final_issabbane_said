@@ -37,6 +37,7 @@ class MailController extends Controller
         ]);
 
         Mail::to("admin@admin.com")->send(new ContactMail($details));
+        toastr()->success('Mail send  Successfully!');
         return redirect()->back()->with("succes",'you have send your message ');
     }
 

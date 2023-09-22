@@ -24,7 +24,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('contact.index') }}">Contact</a>
                             </li>
-                            @role(['admin','webmaste'])
+                            @role(['admin','webmaster'])
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown_3"
                                     role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -35,6 +35,9 @@
                                     <a class="dropdown-item" href="{{route("mailbox.index")}}"> MailBox</a>
                                     <a class="dropdown-item" href="{{route("info.index")}}"> Info</a>
                                     <a class="dropdown-item" href="{{route("users.index")}}"> Users</a>
+                                    @endrole
+                                    @role(["admin","webmaster"])
+                                    <a class="dropdown-item" href="{{route("productback.index")}}"> Products</a>
                                     @endrole
                                     {{-- <a class="dropdown-item" href="tracking.html">tracking</a>
                                     <a class="dropdown-item" href="checkout.html">product checkout</a>
