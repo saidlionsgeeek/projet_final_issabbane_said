@@ -65,7 +65,8 @@
                                 </a>
                             </form>
                         @endauth
-                        <div class="dropdown cart">
+                        @if (auth()->user())
+                            <div class="dropdown cart">
                             <a class="dropdown-toggle" href="{{ route('cart.index') }}" id="navbarDropdown3"
                                 role="button" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-cart-plus"></i>
@@ -76,6 +77,15 @@
                                 </div>
                             </div> -->
                         </div>
+                        @else
+                        <div class="dropdown cart">
+                            <a class="dropdown-toggle" href="{{ route("login") }}" id="navbarDropdown3"
+                                role="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-cart-plus"></i>
+                            </a>
+                        </div>
+                        @endif
+                        
 
                     </div>
                 </nav>

@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class , 'index'])->name('home.index');
 Route::get('/shop',[ShopController::class , 'index'])->name("shop.index");
 Route::get("/contact",[ContactController::class , 'index'])->name("contact.index");
-Route::get("/cart",[CartController::class , 'index'])->name("cart.index");
+Route::get("/cart",[CartController::class , 'index'])->name("cart.index")->middleware("auth");
 Route::get("/product/{product}",[SinglePageController::class , 'index'])->name("product.index");
 Route::get('/shop/filter', [ShopController::class,'filterProducts'])->name('shop.filter');
 
@@ -33,7 +33,8 @@ Route::get('/shop/filter', [ShopController::class,'filterProducts'])->name('shop
 Route::get('/shop/sort', [ShopController::class , "sort"])->name('shop.sort');
 
 
-
+// !! add to cart
+Route::put("/addtocart/{product}/{user}",[CartController::class , 'store'])->middleware("auth")->name("addtocart.store");
 
 // !!mail
 Route::post("/sendmail" , [HomeController::class , 'suscribemail'])->name("sendemail");

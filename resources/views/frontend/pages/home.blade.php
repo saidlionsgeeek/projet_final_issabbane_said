@@ -147,7 +147,16 @@
                                         <div class="single_product_text">
                                             <h4>{{$awesome->name}}</h4>
                                             <h3>${{$awesome->price}}</h3>
-                                            <a class="add_cart">+ add to cart<i class="ti-heart"></i></a>
+                                            @if (auth()->user())
+                                                <form action="{{route("addtocart.store",[$awesome->id,auth()->user()->id])}}" method="POST">
+                                                @csrf
+                                                @method("PUT")
+                                                <button type="submit" class="add_cart btn">+ add to cart</button><i class="ti-heart"></i>
+                                            </form>
+                                            @else
+                                                <a href="{{route("login")}}" class="add_cart btn">+ add to cart</a>
+                                            @endif
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -219,7 +228,7 @@
                         @foreach ( $bestsellers as $bestseller )
                         <a href="{{route("product.index",$bestseller->id)}}">
                         <div class="single_product_item">
-                            <img src="{{ asset('storage/img/'.$bestseller->image) }}" alt="">
+                            <img height="300px" src="{{ asset('storage/img/'.$bestseller->image) }}" alt="">
                             <div class="single_product_text">
                                 <h4>{{$bestseller->name}}</h4>
                                 <h5>Stock : {{$bestseller->stock}}</h5>

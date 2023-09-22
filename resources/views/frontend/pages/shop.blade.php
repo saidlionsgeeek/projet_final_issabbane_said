@@ -153,7 +153,6 @@
                             </div>
                         </div>
                         @endforeach
-
                         <div class="col-lg-12">
                             <div class="d-flex">
                                 {!! $products->links() !!}

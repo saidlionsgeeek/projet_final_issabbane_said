@@ -68,106 +68,46 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <img src="img/product/single-product/cart-1.jpg" alt="" />
-                                        </div>
-                                        <div class="media-body">
-                                            <p>Minimalistic shop for multipurpose use</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$360.00</h5>
-                                </td>
-                                <td>
-                                    <div class="product_count">
-                                        <span class="input-number-decrement"> <i class="ti-angle-down"></i></span>
-                                        <input class="input-number" type="text" value="1" min="0"
-                                            max="10">
-                                        <span class="input-number-increment"> <i class="ti-angle-up"></i></span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$720.00</h5>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <img src="img/product/single-product/cart-1.jpg" alt="" />
-                                        </div>
-                                        <div class="media-body">
-                                            <p>Minimalistic shop for multipurpose use</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$360.00</h5>
-                                </td>
-                                <td>
-                                    <div class="product_count">
-                                        <!-- <input type="text" value="1" min="0" max="10" title="Quantity:"
-                      class="input-text qty input-number" />
-                    <button
-                      class="increase input-number-increment items-count" type="button">
-                      <i class="ti-angle-up"></i>
-                    </button>
-                    <button
-                      class="reduced input-number-decrement items-count" type="button">
-                      <i class="ti-angle-down"></i>
-                    </button> -->
-                                        <span class="input-number-decrement"> <i class="ti-angle-down"></i></span>
-                                        <input class="input-number" type="text" value="1" min="0"
-                                            max="10">
-                                        <span class="input-number-increment"> <i class="ti-angle-up"></i></span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$720.00</h5>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <img src="img/product/single-product/cart-1.jpg" alt="" />
-                                        </div>
-                                        <div class="media-body">
-                                            <p>Minimalistic shop for multipurpose use</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$360.00</h5>
-                                </td>
-                                <td>
-                                    <div class="product_count">
-                                        <span class="input-number-decrement"> <i class="ti-angle-down"></i></span>
-                                        <input class="input-number" type="text" value="1" min="0"
-                                            max="10">
-                                        <span class="input-number-increment"> <i class="ti-angle-up"></i></span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$720.00</h5>
-                                </td>
-                            </tr>
-                            <tr class="bottom_button">
-                                <td>
-                                    <a class="btn_1" href="#">Update Cart</a>
-                                </td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <div class="cupon_text float-right">
-                                        <a class="btn_1" href="#">Close Coupon</a>
-                                    </div>
-                                </td>
-                            </tr>
+                            @php
+                                $totalPrice = 0;
+                            @endphp
+                            @foreach ($productusers as $productuser)
+                                @if (auth()->user()->id == $productuser->user_id)
+                                    <tr>
+                                        <td>
+                                            <div class="media">
+                                                <div class="d-flex">
+                                                    <img height="150px" width="150px"
+                                                        src="{{ asset('storage/img/' . $productuser->product->image) }}"
+                                                        alt="" />
+                                                </div>
+                                                <div class="media-body">
+                                                    <p>{{ $productuser->product->name }}</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <h5>${{ $productuser->product->price }}.00</h5>
+                                        </td>
+                                        <td>
+                                            <div class="product_count">
+                                                <span class="input-number-decrement"> <i
+                                                        class="ti-angle-down"></i></span>
+                                                <input class="input-number" type="text"
+                                                    value="{{ $productuser->stock }}" min="0" max="10">
+                                                <span class="input-number-increment"> <i class="ti-angle-up"></i></span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <h5>${{ $productuser->stock * $productuser->product->price }}.00</h5>
+                                        </td>
+                                    </tr>
+                                    @php
+                                        $totalPrice += $productuser->stock * $productuser->product->price;
+                                    @endphp
+                                @endif
+                            @endforeach
+
                             <tr>
                                 <td></td>
                                 <td></td>
@@ -175,7 +115,7 @@
                                     <h5>Subtotal</h5>
                                 </td>
                                 <td>
-                                    <h5>$2160.00</h5>
+                                    <h5>${{ $totalPrice }}.00</h5>
                                 </td>
                             </tr>
                         </tbody>
@@ -187,10 +127,10 @@
                 </div>
             </div>
     </section>
-    <!--================End Cart Area =================-->
+    {{-- <--================End Cart Area =================--> --}}
 
     <!--::footer_part start::-->
-    @include("layouts.footer")
+    @include('layouts.footer')
     <!--::footer_part end::-->
 
     <!-- jquery plugins here-->
