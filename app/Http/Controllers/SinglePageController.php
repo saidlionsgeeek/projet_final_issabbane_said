@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 class SinglePageController extends Controller
 {
     public function index(Product $product){
-        return view("frontend.pages.single_page",compact("product"));
+        $bestsellers = Product::where('stock', '<=', 5)->get();
+        return view("frontend.pages.single_page",compact("product","bestsellers"));
     }
 }
