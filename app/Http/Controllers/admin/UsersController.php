@@ -41,7 +41,7 @@ class UsersController extends Controller
     }
     public function destroy(User $user){
         $user->delete();
-        toastr()->warning("user deletede");
+        toastr()->warning("user deleted Successfully !");
         return redirect()->back() ;
     }
 }
