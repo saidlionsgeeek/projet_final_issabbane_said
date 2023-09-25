@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductUser;
 use Illuminate\Http\Request;
 
 class ShopController extends Controller
@@ -12,7 +13,8 @@ class ShopController extends Controller
         $bestsellers = Product::where('stock', '<=', 5)->get();
         $categories = Category::all();
         $products= Product::latest()->paginate(9);
-        return view("frontend.pages.shop",compact('bestsellers',"categories","products"));
+        $productusers = ProductUser::all();
+        return view("frontend.pages.shop",compact('bestsellers',"categories","products",'productusers'));
     }
 
 

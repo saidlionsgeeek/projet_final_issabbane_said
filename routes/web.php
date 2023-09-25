@@ -56,12 +56,16 @@ Route::middleware('auth')->group(function () {
 // !! backoffice
 
 Route::middleware(['auth','role:webmaster'])->group(function () {
+    // ! mail page
     Route::get('/backoffice/mailbox',[MailController::class , 'index'])->middleware('role:admin')->name("mailbox.index");
+    Route::put('/backoffice/mailbox/check/{email}',[MailController::class , 'checkmail'])->middleware('role:admin')->name("mailbox.checkmail");
+    // ! userpage
     Route::get('/backoffice/users',[UsersController::class , 'index'])->middleware('role:admin')->name("users.index");
     Route::post('/Backoffice/users/assignrole/{user}', [UsersController::class, "assignrole"])->name("users.assignrole")->middleware('role:admin');
+    Route::delete('/Backoffice/users/delete/{user}', [UsersController::class, "destroy"])->name("users.destroy")->middleware('role:admin');
     Route::delete("/user/{user}/roles/{role}", [UsersController::class, "removerole"])->name('user.role.remove')->middleware('role:admin');
+    // !info page
     Route::get('/backoffice/info',[InfoController::class , 'index'])->middleware('role:admin')->name("info.index");
-    Route::put('/backoffice/mailbox/check/{email}',[MailController::class , 'checkmail'])->middleware('role:admin')->name("mailbox.checkmail");
     Route::put('/backoffice/info/{info}',[InfoController::class , 'update'])->middleware('role:admin')->name("info.update");
     // !! Products
     Route::get("/backoffice/products" , [ProductController::class , 'index'])->name("productback.index");

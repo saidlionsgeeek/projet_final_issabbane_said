@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -17,7 +18,8 @@ class ProductController extends Controller
     {
         $products = Product::all();
         $categories = Category::all();
-        return view("backend.pages.products", compact("products", "categories"));
+        $productusers = ProductUser::all();
+        return view("backend.pages.products", compact("products", "categories",'productusers'));
     }
     public function store(Request $request)
     {

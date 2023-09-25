@@ -10,6 +10,7 @@
     <link rel="icon" href="img/favicon.png">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <!-- animate CSS -->
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
     <!-- owl carousel CSS -->
@@ -40,10 +41,11 @@
         <thead align="middle">
             <tr>
                 
-                <th scope="col">name</th>
-                <th scope="col">email</th>
-                <th scope="col">roles</th>
-                <th scope="col">assign role</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Roles</th>
+                <th scope="col">Assign Role</th>
+                <th scope="col">Delete User</th>
             </tr>
         </thead>
         <tbody align="middle">
@@ -63,6 +65,13 @@
                 </td>
                 <td>
                     @include("backend.components.users.assignrole")
+                </td>
+                <td>
+                    <form action="{{route("users.destroy",$user->id)}}" method="POST">
+                        @csrf
+                        @method("DELETE")
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
                 </td>
                 </tr>
             @endif

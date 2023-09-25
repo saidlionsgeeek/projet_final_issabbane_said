@@ -3,16 +3,19 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\ProductUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
+use Yoeunes\Toastr\Toastr;
 
 class UsersController extends Controller
 {
     public function index(){
         $roles = Role::whereNotIn("name", ['admin'])->get();
         $users = User::all();
-        return view("backend.pages.users",compact("users","roles"));
+        $productusers = ProductUser::all();
+        return view("backend.pages.users",compact("users","roles",'productusers'));
     }
 
     public function assignRole(Request $request, User $user)
@@ -35,5 +38,10 @@ class UsersController extends Controller
             return back();
         }
         return back();
+    }
+    public function destroy(User $user){
+        $user->delete();
+        toastr()->warning("user deletede");
+        return redirect()->back() ;
     }
 }

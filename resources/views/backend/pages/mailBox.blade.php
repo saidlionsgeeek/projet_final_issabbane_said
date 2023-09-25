@@ -47,7 +47,7 @@
         <tbody align="middle">
             @foreach ($emails as $key => $email )
             @if ($email->checkmail == 1)
-                <tr class="bg-secondary">
+                <tr class="bg-success">
                 <th scope="row">{{$key + 1}}</th>
                 <td>{{$email->name}}</td>
                 <td>{{$email->subject}}</td>

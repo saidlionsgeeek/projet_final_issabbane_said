@@ -5,13 +5,15 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Info;
+use App\Models\ProductUser;
 use App\Models\User;
 
 class InfoController extends Controller
 {
     public function index(){
         $infos = Info::all();
-        return view('backend.pages.info',compact("infos"));
+        $productusers = ProductUser::all();
+        return view('backend.pages.info',compact("infos","productusers"));
     }
 
     public function update (Request $request , Info $info) {

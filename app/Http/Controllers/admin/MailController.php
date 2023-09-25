@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Mail\ContactMail;
 use App\Models\MailBox;
+use App\Models\ProductUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -12,7 +13,8 @@ class MailController extends Controller
 {
     public function index(){
         $emails = MailBox::all();
-        return view("backend.pages.mailBox",compact('emails'));
+        $productusers = ProductUser::all();
+        return view("backend.pages.mailBox",compact('emails',"productusers"));
     }
 
     public function store(Request $request){
